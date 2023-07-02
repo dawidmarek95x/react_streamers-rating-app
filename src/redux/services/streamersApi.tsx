@@ -8,7 +8,7 @@ const apiWithTags = apiSlice.enhanceEndpoints({
 export const streamersApi = apiWithTags.injectEndpoints({
   endpoints: (builder) => ({
     createStreamer: builder.mutation({
-      query: ({ data }) => ({
+      query: ({ data }: StreamerPostData) => ({
         url: `${streamers}`,
         method: "POST",
         headers: {
@@ -28,7 +28,7 @@ export const streamersApi = apiWithTags.injectEndpoints({
         streamingPlatforms,
         orderBy,
         sortOrder,
-      }) => {
+      }: GetStreamersSearchParams) => {
         const params = new URLSearchParams({
           ...(limit && { limit }),
           ...(offset && { offset }),
@@ -51,7 +51,7 @@ export const streamersApi = apiWithTags.injectEndpoints({
     }),
 
     getStreamer: builder.query({
-      query: (id) => ({
+      query: (id: number) => ({
         url: `${streamers}/${id}`,
         method: "GET",
         headers: {
@@ -62,7 +62,7 @@ export const streamersApi = apiWithTags.injectEndpoints({
     }),
 
     updateStreamerData: builder.mutation({
-      query: ({ id, data }) => ({
+      query: ({ id, data }: StreamerUpdateData) => ({
         url: `${streamers}/${id}`,
         method: "PATCH",
         headers: {
@@ -74,7 +74,7 @@ export const streamersApi = apiWithTags.injectEndpoints({
     }),
 
     updateStreamerVotes: builder.mutation({
-      query: ({ id, data }) => ({
+      query: ({ id, data }: StreamerUpdateVotesData) => ({
         url: `${streamers}/${id}/vote`,
         method: "PATCH",
         headers: {

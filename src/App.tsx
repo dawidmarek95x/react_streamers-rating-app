@@ -1,9 +1,7 @@
-import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "pages/RootLayout/RootLayout";
 import NotFound from "pages/NotFound/NotFound";
-
-const Home = lazy(() => import("./pages/Home/Home"));
+import Home from "pages/Home/Home";
 
 const App = () => {
   return (
