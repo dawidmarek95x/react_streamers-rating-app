@@ -43,16 +43,21 @@ const Home = () => {
             }`}
           />
         </AccordionHeader>
-        <AccordionBody className="grid gap-3 p-5 rounded-b-md">
-          <Input label="Name" />
-          <Input label="Pseudonym" />
-          <Textarea label="Description" />
-          <Select label="Streaming platform">
-            {STREAMER_INPUTS.STREAMING_PLATFORM.map((platform) => (
-              <Option value={platform.toLowerCase()}>{platform}</Option>
-            ))}
-          </Select>
-          <Textarea label="Avatar URL" />
+        <AccordionBody className="p-5">
+          <form className="grid gap-3 rounded-b-md">
+            <Input color="purple" label="Name" />
+            <Input color="purple" label="Pseudonym" />
+            <Textarea color="purple" label="Description" />
+            <Select color="purple" label="Streaming platform">
+              {STREAMER_INPUTS.STREAMING_PLATFORM.map((platform) => (
+                <Option value={platform.toLowerCase()}>{platform}</Option>
+              ))}
+            </Select>
+            <Input color="purple" label="Avatar URL" />
+            <button className="btn-accent ms-auto w-1/3 lg:w-1/4 xl:w-2/12">
+              SEND
+            </button>
+          </form>
         </AccordionBody>
       </Accordion>
     </>

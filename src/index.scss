@@ -57,7 +57,7 @@ h6 {
 
 @layer components {
   .btn-accent {
-    @apply text-lg py-1 px-3 normal-case transition ease-in-out duration-300 bg-accent hover:bg-accent-dark hover:shadow-inner border-2 border-accent hover:border-accent-dark rounded-md;
+    @apply text-white text-lg py-1 px-3 normal-case transition ease-in-out duration-300 bg-accent hover:bg-accent-dark hover:shadow-inner border-2 border-accent hover:border-accent-dark rounded-md;
   }
 
   .btn-accent-outline {
