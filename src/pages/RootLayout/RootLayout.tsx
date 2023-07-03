@@ -1,3 +1,4 @@
+import { Spinner } from "@material-tailwind/react";
 import Footer from "components/Footer/Footer";
 import Header from "components/Header/Header";
 import { Suspense } from "react";
@@ -6,10 +7,17 @@ import { ToastContainer } from "react-toastify";
 
 const RootLayout = () => {
   return (
-    <>
+    <div className="p-5">
       <Header />
       <main>
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense
+          fallback={
+            <Spinner
+              color="gray"
+              className="w-14 h-14 text-accent mx-auto my-4"
+            />
+          }
+        >
           <Outlet />
         </Suspense>
       </main>
@@ -27,7 +35,7 @@ const RootLayout = () => {
         pauseOnHover
         theme="colored"
       />
-    </>
+    </div>
   );
 };
 
