@@ -1,0 +1,5 @@
+@mixin heading($size) {
+  font-family: "Roboto Mono", monospace;
+  font-size: $size;
+  font-weight: 700;
+}
