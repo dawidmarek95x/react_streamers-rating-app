@@ -7,8 +7,9 @@ const StreamerAdditionForm = () => {
   const [createStreamer] = useCreateStreamerMutation();
   const {
     handleSubmit,
-    register,
     formState: { errors },
+    register,
+    reset,
   } = useForm<StreamerCreationData>({
     defaultValues: {
       name: "",
@@ -24,6 +25,7 @@ const StreamerAdditionForm = () => {
 
     if ("data" in hasBeenSent) {
       toast.success("Streamer added successfully.");
+      reset();
     } else if ("error" in hasBeenSent) {
       const error = hasBeenSent?.error as StreamerSubmitError;
 

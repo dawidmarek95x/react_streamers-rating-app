@@ -36,7 +36,7 @@ interface StreamerPostData {
 }
 
 interface StreamerUpdateData extends StreamerPostData {
-  id: number;
+  id: string;
 }
 
 interface StreamersUpdateVote {
@@ -45,7 +45,7 @@ interface StreamersUpdateVote {
 }
 
 interface StreamerUpdateVotesData {
-  id: number;
+  id: string;
   data: StreamersUpdateVotes;
 }
 
@@ -63,5 +63,17 @@ interface Streamer {
 interface StreamersData {
   data: {
     data: Streamer[];
+    totalResults: number;
+    currentLimit: number;
+    currentOffset: number;
   };
+}
+
+interface StreamerData {
+  data: {
+    data: Streamer;
+  };
+  isLoading: boolean;
+  isSuccess: boolean;
+  isError: boolean;
 }

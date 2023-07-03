@@ -1,39 +1,20 @@
 import StreamerShortCard from "components/StreamerShortCard/StreamerShortCard";
-import React, { useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { useGetStreamersQuery } from "redux/services/streamersApi";
 
-const INITIAL_SEARCH_PARAMS: InitialSearchParams = {
-  page: 1,
-  limit: 20,
-};
+interface StreamerListProps {
+  data: Streamer[];
+}
 
-const StreamerList = () => {
-  const [searchParams] = useSearchParams();
-  const [currPage] = useState(
-    Number(searchParams.get("page")) || INITIAL_SEARCH_PARAMS.page
-  );
-
-  const { data: streamersData } = useGetStreamersQuery<StreamersData>({
-    limit: INITIAL_SEARCH_PARAMS.limit.toString(),
-    offset: currPage
-      ? ((currPage - 1) * INITIAL_SEARCH_PARAMS.limit).toString()
-      : "0",
-    name: searchParams.get("name") ?? undefined,
-    pseudonym: searchParams.get("pseudonym") ?? undefined,
-    streamingPlatforms: searchParams.get("streamingPlatforms") ?? undefined,
-    orderBy: searchParams.get("orderBy") ?? "votes_difference",
-    sortOrder: searchParams.get("sortOrder") ?? "DESC",
-  });
-
+const StreamerList = ({ data }: StreamerListProps) => {
   return (
-    <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-      {streamersData?.data.map((streamer) => (
-        <li key={streamer.id}>
-          <StreamerShortCard data={streamer} />
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xxl:grid-cols-5 gap-x-3 gap-y-4 justify-items-center mb-5">
+        {data?.map((streamer) => (
+          <li key={streamer.id}>
+            <StreamerShortCard data={streamer} />
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 

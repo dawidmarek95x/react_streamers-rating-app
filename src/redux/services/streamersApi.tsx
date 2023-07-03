@@ -51,7 +51,7 @@ export const streamersApi = apiWithTags.injectEndpoints({
     }),
 
     getStreamer: builder.query({
-      query: (id: number) => ({
+      query: (id: string) => ({
         url: `${streamers}/${id}`,
         method: "GET",
         headers: {
